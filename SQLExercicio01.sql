@@ -5,43 +5,43 @@ GO
 USE Clinica
 
 CREATE TABLE Paciente (
-Num_Beneficiario	INT		NOT NULL	IDENTITY(99901,1),
-Nome	VARCHAR(100)	NOT NULL,
-Logradouro	VARCHAR(200)	NOT NULL,
-Numero		INT		NOT NULL,
-CEP		CHAR(8)		NOT NULL,
-Complemento		VARCHAR(255)	NOT NULL,
-Telefone	VARCHAR(11)		NOT NULL
+Num_Beneficiario	INT				NOT NULL	IDENTITY(99901,1),
+Nome				VARCHAR(100)	NOT NULL,
+Logradouro			VARCHAR(200)	NOT NULL,
+Numero				INT				NOT NULL,
+CEP					CHAR(8)			NOT NULL,
+Complemento			VARCHAR(255)	NOT NULL,
+Telefone			VARCHAR(11)		NOT NULL
 
 PRIMARY KEY(Num_Beneficiario)
 )
 GO
 CREATE TABLE Especialidade (
-ID		INT		NOT NULL	IDENTITY(1,1),
+ID				INT				NOT NULL	IDENTITY(1,1),
 Especialidade	VARCHAR(100)	NOT NULL,
 
 PRIMARY KEY(ID)
 )
 GO
 CREATE TABLE Medico (
-Codigo		INT		NOT NULL	IDENTITY(100001,1),
-Nome	VARCHAR(100)	NOT NULL,
-Logradouro	VARCHAR(200)	NOT NULL,
-Numero		INT		NOT NULL,
-CEP		CHAR(8)		NOT NULL,
-Complemento		VARCHAR(255)	NOT NULL,
-Contato		VARCHAR(11)		NOT NULL,
-EspecialidadeID		INT		NOT NULL
+Codigo				INT				NOT NULL	IDENTITY(100001,1),
+Nome				VARCHAR(100)	NOT NULL,
+Logradouro			VARCHAR(200)	NOT NULL,
+Numero				INT				NOT NULL,
+CEP					CHAR(8)			NOT NULL,
+Complemento			VARCHAR(255)	NOT NULL,
+Contato				VARCHAR(11)		NOT NULL,
+EspecialidadeID		INT				NOT NULL
 
 PRIMARY KEY(Codigo)
 FOREIGN KEY(EspecialidadeID) REFERENCES Especialidade(ID) 
 )
 GO
 CREATE TABLE Consulta (
-PacienteNum_Beneficiario	INT		NOT NULL,
-MedicoCodigo	INT		NOT NULL,
-Data_hora	DATETIME	NOT NULL,
-Observacao	VARCHAR(255)	NOT NULL
+PacienteNum_Beneficiario	INT				NOT NULL,
+MedicoCodigo				INT				NOT NULL,
+Data_hora					DATETIME		NOT NULL,
+Observacao					VARCHAR(255)	NOT NULL
 
 PRIMARY KEY(PacienteNum_Beneficiario, MedicoCodigo, Data_hora),
 FOREIGN KEY(PacienteNum_Beneficiario) REFERENCES Paciente(Num_Beneficiario),
